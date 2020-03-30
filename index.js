@@ -68,10 +68,8 @@ async function deathAfter(days) {
 }
 deathAfter(10).then((res) => {
     console.log(`
-                Last Daily Death: ${res.lastDailyDeath}, Total Death : ${res.lastTotalDeath}
-
-                Future Daily Death: ${res.newDailyDeath}, Total Death : ${res.newTotalDeath}
-
-                Future Based on Recent Daily Death: ${res.newRecentDailyDeath}, Total Death : ${res.newRecentTotalDeath}
+                Last Daily Death:           \t\t        ${res.lastDailyDeath},      \t\t    Total Death : ${res.lastTotalDeath}
+                Future Daily Death:         \t\t        ${res.newDailyDeath},       \t\t    Total Death : ${res.newTotalDeath}
+                Future Recent Daily Death:  \t\t        ${res.newRecentDailyDeath}  \t\t\t    Total Death : ${res.newRecentTotalDeath}
                 `)
 });
