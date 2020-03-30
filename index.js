@@ -66,10 +66,15 @@ async function deathAfter(days) {
         newRecentTotalDeath: Math.round(newRecentTotalDeath),
     };
 }
-deathAfter(10).then((res) => {
+function inK(v) {
+    return Math.round(v/1000);
+}
+const futureDays = 10;
+deathAfter(futureDays).then((res) => {
+    const futureDailyAvg = (res.newDailyDeath + res.newRecentDailyDeath) / 2;
+    const futureTotalAvg = (res.newTotalDeath + res.newRecentTotalDeath) / 2;
     console.log(`
-                Last Daily Death:           \t\t        ${res.lastDailyDeath},      \t\t    Total Death : ${res.lastTotalDeath}
-                Future Daily Death:         \t\t        ${res.newDailyDeath},       \t\t    Total Death : ${res.newTotalDeath}
-                Future Recent Daily Death:  \t\t        ${res.newRecentDailyDeath}  \t\t\t    Total Death : ${res.newRecentTotalDeath}
-                `)
+    Last Daily Death:\t ${inK(res.lastDailyDeath)}K,\t In ${futureDays} Days: \t ${inK(futureDailyAvg)}K
+    Total Death:\t ${inK(res.lastTotalDeath)}K,\t In ${futureDays} Days: \t ${inK(futureTotalAvg)}K
+    `)
 });
