@@ -20,7 +20,7 @@
 set -o nounset                              # Treat unset variables as an error
 
 echo $(date) >> daily.log
-npm start | grep 'Daily' >> daily.log
+npm start | grep ':' >> daily.log
 
 echo "========================================" >> daily.log
 
