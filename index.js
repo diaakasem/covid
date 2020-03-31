@@ -3,6 +3,8 @@ import _ from 'lodash';
 
 const url = 'https://www.worldometers.info/coronavirus/coronavirus-death-toll/';
 const regex = /data\:\s*\[([0-9]+,\s?)+[0-9]+\]/g;
+const futureDays = 10;
+
 async function getInfo() {
     return axios.get(url)
     .then((res) => {
@@ -69,7 +71,6 @@ async function deathAfter(days) {
 function inK(v) {
     return Math.round(v/1000);
 }
-const futureDays = 10;
 deathAfter(futureDays).then((res) => {
     const futureDailyAvg = (res.newDailyDeath + res.newRecentDailyDeath) / 2;
     const futureTotalAvg = (res.newTotalDeath + res.newRecentTotalDeath) / 2;
